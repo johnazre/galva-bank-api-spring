@@ -6,6 +6,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.HashMap;
+
 @RestController
 @RequestMapping("api/v1/users")
 public class UsersController {
@@ -17,9 +19,15 @@ public class UsersController {
         this.usersRepository = usersRepository;
     }
 
-    @PostMapping
+    @PostMapping("/")
     public User addOneUser(@RequestBody User user) {
         System.out.println(user);
         return usersRepository.save(user);
+    }
+
+    @PostMapping("/login")
+    public User userLogin(@RequestBody HashMap<String, String> creds) {
+        User user = usersRepository.findByEmail(creds.get("email"));
+        return user;
     }
 }
