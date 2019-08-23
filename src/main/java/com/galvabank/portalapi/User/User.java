@@ -25,6 +25,7 @@ public class User {
     @Column
     private String address;
 
-
+    @Column
+    private String password;
 
 }
