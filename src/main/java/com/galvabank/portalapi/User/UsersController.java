@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.HashMap;
 
 @RestController
-@RequestMapping("api/v1/users")
+@RequestMapping("api/v1")
 public class UsersController {
 
     @Autowired
@@ -19,13 +19,13 @@ public class UsersController {
         this.usersRepository = usersRepository;
     }
 
-    @PostMapping("/")
+    @PostMapping("/users")
     public User addOneUser(@RequestBody User user) {
         System.out.println(user);
         return usersRepository.save(user);
     }
 
-    @PostMapping("/login")
+    @PostMapping("/users/login")
     public User userLogin(@RequestBody HashMap<String, String> creds) {
         User user = usersRepository.findByEmail(creds.get("email"));
         return user;
