@@ -1,8 +1,11 @@
 package com.galvabank.portalapi.User;
 
+import lombok.Data;
+
 import javax.persistence.*;
 
 @Entity
+@Data
 @Table(name = "users")
 public class User {
 
@@ -21,5 +24,7 @@ public class User {
 
     @Column
     private String address;
+
+
 
 }
